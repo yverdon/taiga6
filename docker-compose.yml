@@ -60,18 +60,18 @@ x-volumes:
 
 
 services:
-  taiga-db:
-    image: postgres:12.3
-    environment:
-      POSTGRES_DB:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
-    volumes:
-      - taiga-db-data:/var/lib/postgresql/data
-    networks:
-      - taiga
-    ports:
-      - "${POSTGRES_HOST_PORT}:5432"
+  # taiga-db:
+  #   image: postgres:12.3
+  #   environment:
+  #     POSTGRES_DB:
+  #     POSTGRES_USER:
+  #     POSTGRES_PASSWORD:
+  #   volumes:
+  #     - taiga-db-data:/var/lib/postgresql/data
+  #   networks:
+  #     - taiga
+  #   ports:
+  #     - "${POSTGRES_HOST_PORT}:5432"
 
   taiga-back:
     image: taigaio/taiga-back:latest
@@ -80,7 +80,7 @@ services:
     networks:
       - taiga
     depends_on:
-      - taiga-db
+      # - taiga-db
       - taiga-events-rabbitmq
       - taiga-async-rabbitmq
 
@@ -92,7 +92,7 @@ services:
     networks:
       - taiga
     depends_on:
-      - taiga-db
+      # - taiga-db
       - taiga-back
       - taiga-async-rabbitmq
 
@@ -125,8 +125,8 @@ services:
       ENABLE_TRELLO_IMPORTER: "false"
     networks:
       - taiga
-    # volumes:
-    #   - ./conf.json:/usr/share/nginx/html/conf.json:ro
+    volumes:
+      - ./conf.json:/usr/share/nginx/html/conf.json:ro
 
   taiga-events:
     image: taigaio/taiga-events:latest
@@ -175,7 +175,7 @@ services:
 volumes:
   taiga-static-data:
   taiga-media-data:
-  taiga-db-data:
+  # taiga-db-data:
 
 networks:
   taiga:
