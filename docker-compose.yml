@@ -115,7 +115,7 @@ services:
     image: taigaio/taiga-front:latest
     environment:
       TAIGA_URL: "${TAIGA_SITES_SCHEME}://${TAIGA_SITES_DOMAIN}"
-      TAIGA_WEBSOCKETS_URL: "wss://${TAIGA_SITES_DOMAIN}:${APP_HOST_PORT}"
+      TAIGA_WEBSOCKETS_URL: "wss://${TAIGA_SITES_DOMAIN}"
       PUBLIC_REGISTER_ENABLED: "true"
       DEFAULT_LANGUAGE: "fr"
       DEBUG: "false"
