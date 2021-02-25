@@ -115,8 +115,11 @@ services:
     image: taigaio/taiga-front:latest
     environment:
       TAIGA_URL: "${TAIGA_SITES_SCHEME}://${TAIGA_SITES_DOMAIN}"
-      TAIGA_WEBSOCKETS_URL: "ws://${HOST}:${APP_HOST_PORT}"
+      TAIGA_WEBSOCKETS_URL: "wss://${TAIGA_SITES_DOMAIN}:${APP_HOST_PORT}"
       PUBLIC_REGISTER_ENABLED:
+      DEFAULT_LANGUAGE: "fr"
+      DEBUG: "false"
+      DEBUG_INFO: "false"
       # Get these in your profile https://github.com/settings/apps
       # or in your organization profile https://github.com/organizations/{ORGANIZATION-SLUG}/settings/applications
       #GITHUB_CLIENT_ID: "github-client-id"
@@ -130,8 +133,8 @@ services:
       ENABLE_TRELLO_IMPORTER: "false"
     networks:
       - taiga
-    volumes:
-      - ./conf.json:/usr/share/nginx/html/conf.json:ro
+    #volumes:
+     # - ./conf.json:/usr/share/nginx/html/conf.json:ro
 
   taiga-events:
     image: taigaio/taiga-events:latest
