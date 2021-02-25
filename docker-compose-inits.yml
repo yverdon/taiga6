@@ -2,6 +2,8 @@ version: "3.5"
 
 x-environment:
   &default-back-environment
+  TAIGA_STATIC_DIR:
+  TAIGA_MEDIA_DIR:
   POSTGRES_DB:
   POSTGRES_USER:
   POSTGRES_PASSWORD:
