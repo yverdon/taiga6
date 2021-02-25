@@ -56,8 +56,8 @@ x-environment:
 
 x-volumes:
   &default-back-volumes
-  - taiga-static-data:/taiga-back/static
-  - taiga-media-data:/taiga-back/media
+  - ${TAIGA_STATIC_DIR}:/taiga-back/static
+  - ${TAIGA_MEDIA_DIR}:/taiga-back/media
   # - ./config.py:/taiga-back/settings/config.py:ro
 
 
@@ -165,8 +165,8 @@ services:
       - "${APP_HOST_PORT}:80"
     volumes:
       - ./taiga-gateway/taiga.conf:/etc/nginx/conf.d/default.conf
-      - taiga-static-data:/taiga/static
-      - taiga-media-data:/taiga/media
+      - ${TAIGA_STATIC_DIR}:/taiga/static
+      - ${TAIGA_MEDIA_DIR}:/taiga/media
     networks:
       - taiga
     depends_on:
