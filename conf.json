@@ -1,7 +1,7 @@
 {
-    "api": "https://taiga.mapnv.ch/api/v1/",
-    "admin": "https://taiga.mapnv.ch/admin/",
-    "eventsUrl": null,
+    "api": "${TAIGA_URL}/api/v1/",
+    "admin": "${TAIGA_URL}/admin/",
+    "eventsUrl": "${TAIGA_WEBSOCKETS_URL}/events",
     "eventsMaxMissedHeartbeats": 5,
     "eventsHeartbeatIntervalTime": 60000,
     "eventsReconnectTryInterval": 10000,
