@@ -2,8 +2,6 @@ version: "3.5"
 
 x-environment:
   &default-back-environment
-  TAIGA_STATIC_DIR:
-  TAIGA_MEDIA_DIR:
   # Database settings
   POSTGRES_DB:
   POSTGRES_USER:
@@ -53,6 +51,8 @@ x-environment:
   # ENABLE_TRELLO_IMPORTER: "False"
   # TRELLO_IMPORTER_API_KEY: "api-key-from-trello"
   # TRELLO_IMPORTER_SECRET_KEY: "secret-key-from-trello"
+  TAIGA_MEDIA_DIR:
+  TAIGA_STATIC_DIR:
   MEDIA_URL: "${TAIGA_URL}/media/"
   STATIC_URL: "${TAIGA_URL}/static/"
 
@@ -116,7 +116,7 @@ services:
     environment:
       TAIGA_URL: "${TAIGA_SITES_SCHEME}://${TAIGA_SITES_DOMAIN}"
       TAIGA_WEBSOCKETS_URL: "wss://${TAIGA_SITES_DOMAIN}:${APP_HOST_PORT}"
-      PUBLIC_REGISTER_ENABLED:
+      PUBLIC_REGISTER_ENABLED: "true"
       DEFAULT_LANGUAGE: "fr"
       DEBUG: "false"
       DEBUG_INFO: "false"
