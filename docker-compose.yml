@@ -128,6 +128,7 @@ services:
       # or in your organization profile https://{YOUR-GITLAB}/admin/applications
       #GITLAB_CLIENT_ID: "gitlab-client-id"
       #GITLAB_URL: "gitlab-url"
+      ENABLE_SLACK: "true"
       # IMPORTERS
       ENABLE_GITHUB_IMPORTER: "false"
       ENABLE_JIRA_IMPORTER: "false"
