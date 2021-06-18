@@ -140,7 +140,7 @@ services:
       - taiga
     #volumes:
      # - ./conf.json:/usr/share/nginx/html/conf.json:ro
-     restart: unless-stopped
+    restart: unless-stopped
 
   taiga-events:
     image: taigaio/taiga-events:latest
