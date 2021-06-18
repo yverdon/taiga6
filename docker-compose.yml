@@ -89,6 +89,7 @@ services:
       # - taiga-db
       - taiga-events-rabbitmq
       - taiga-async-rabbitmq
+    restart: unless-stopped
 
   taiga-async:
     image: taigaio/taiga-back:latest
@@ -101,6 +102,7 @@ services:
       # - taiga-db
       - taiga-back
       - taiga-async-rabbitmq
+    restart: unless-stopped
 
   taiga-async-rabbitmq:
     image: rabbitmq:3-management-alpine
@@ -111,6 +113,7 @@ services:
       RABBITMQ_DEFAULT_VHOST:
     networks:
       - taiga
+    restart: unless-stopped
 
   taiga-front:
     image: taigaio/taiga-front:latest
@@ -137,6 +140,7 @@ services:
       - taiga
     #volumes:
      # - ./conf.json:/usr/share/nginx/html/conf.json:ro
+     restart: unless-stopped
 
   taiga-events:
     image: taigaio/taiga-events:latest
@@ -148,6 +152,7 @@ services:
       - taiga
     depends_on:
       - taiga-events-rabbitmq
+    restart: unless-stopped
 
   taiga-events-rabbitmq:
     image: rabbitmq:3-management-alpine
@@ -158,6 +163,7 @@ services:
       RABBITMQ_DEFAULT_VHOST:
     networks:
       - taiga
+    restart: unless-stopped
 
   taiga-protected:
     image: taigaio/taiga-protected:latest
@@ -166,6 +172,7 @@ services:
       SECRET_KEY: ${TAIGA_SECRET_KEY}
     networks:
       - taiga
+    restart: unless-stopped
 
   taiga-gateway:
     image: nginx:1.19-alpine
@@ -181,6 +188,7 @@ services:
       - taiga-front
       - taiga-back
       - taiga-events
+    restart: unless-stopped
 
 volumes:
   taiga-static-data:
