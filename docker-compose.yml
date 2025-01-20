@@ -175,7 +175,7 @@ services:
     restart: unless-stopped
 
   taiga-gateway:
-    image: nginx:1.19-alpine
+    image: nginx:1.27-alpine
     ports:
       - "${APP_HOST_PORT}:80"
     volumes:
@@ -197,3 +197,11 @@ volumes:
 
 networks:
   taiga:
+    name: taiga
+    attachable: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
+          ip_range: 172.25.5.0/24
+          gateway: 172.25.0.1
